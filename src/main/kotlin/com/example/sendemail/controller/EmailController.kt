@@ -1,4 +1,5 @@
 package com.example.sendemail.controller
+
 import com.example.emailservice.dto.EmailRequest
 import com.example.sendemail.service.EmailService
 import org.springframework.http.ResponseEntity
@@ -8,7 +9,7 @@ import org.springframework.web.bind.annotation.*
 @RequestMapping("/api/email")
 class EmailController(private val emailService: EmailService) {
 
-    @PostMapping("https://tbs-email-api-gateway.omb.to/email/v1/send_template")
+    @PostMapping("/send")
     fun sendEmail(@RequestBody emailRequest: EmailRequest): ResponseEntity<String> {
         return emailService.sendEmail(emailRequest)
     }
