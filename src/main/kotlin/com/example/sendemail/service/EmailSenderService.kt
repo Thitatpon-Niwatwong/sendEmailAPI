@@ -31,13 +31,11 @@ class EmailSenderService {
     fun sendEmailWithAttachment(toEmail: String, subject: String, body: String, attachmentPath: String) {
         val message = mailSender.createMimeMessage()
         val helper = MimeMessageHelper(message, true)
-
-        helper.setFrom("64011150@kmitl.ac.th")
+        
         helper.setTo(toEmail)
         helper.setSubject(subject)
         helper.setText(body)
 
-        // แนบไฟล์
         val file = File(attachmentPath)
         if (file.exists()) {
             helper.addAttachment(file.name, file)
